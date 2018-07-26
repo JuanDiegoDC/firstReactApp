@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const dummyData = ['Wash clothes.', 'Call Family.', 'Complete Homework.'];
+const dummyData = [{taskText: 'Wash clothes.', completed: false}, {taskText: 'Call Family.', completed: true}, {taskText: 'Complete Homework.', completed: false}];
 
 class TodoList extends React.Component{
   constructor(props){
@@ -24,10 +24,13 @@ class Todo extends React.Component{
   constructor(props){
     super(props)
   }
+
   render(){
-    return(
-      <li><button>X</button>{this.props.task}</li>
-    )
+      if (this.props.task.completed){
+        return(<li><button>X</button><strike>{this.props.task.taskText}</strike></li>)
+      } else {
+      return(<li><button>X</button>{this.props.task.taskText}</li>)
+    }
   }
 }
 

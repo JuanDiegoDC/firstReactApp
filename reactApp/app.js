@@ -13,7 +13,7 @@ class TodoList extends React.Component{
         <input type="text" placeholder="I have to do."></input>
         <button>Will do.</button>
         <ul>
-          {dummyData.map((task)=><Todo task={task}/>)}
+          {this.props.todos.map((task)=><Todo task={task}/>)}
         </ul>
       </div>
     )
@@ -34,5 +34,25 @@ class Todo extends React.Component{
   }
 }
 
-ReactDOM.render(<TodoList />,
+class TodoApp extends React.Component{
+  constructor(props){
+    super(props),
+    this.state = {
+      todos: []
+    }
+  }
+
+    componentDidMount(){
+      this.setState({
+        todos: dummyData
+      });
+    }
+
+    render(){
+      return(
+        <TodoList todos={this.state.todos}/>
+      )
+    }
+  }
+ReactDOM.render(<TodoApp />,
    document.getElementById('root'));

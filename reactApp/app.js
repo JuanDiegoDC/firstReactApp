@@ -9,7 +9,13 @@ class TodoList extends React.Component{
   }
   render(){
     return(
-      <ul>{dummyData.map((task)=><Todo task={task}/>)}</ul>
+      <div>
+        <input type="text" placeholder="I have to do."></input>
+        <button>Will do.</button>
+        <ul>
+          {dummyData.map((task)=><Todo task={task}/>)}
+        </ul>
+      </div>
     )
   }
 }
